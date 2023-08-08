@@ -1,0 +1,10 @@
+#mac
+**/DS_Store
+#target
+**/target
+**/build
+**/out
+#eclipse
+**/.setting
+**/.classpath
+**/.project
