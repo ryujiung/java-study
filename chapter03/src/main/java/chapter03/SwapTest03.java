@@ -1,25 +1,27 @@
 package chapter03;
 
+import mypackage.Value;
+
 public class SwapTest03 {
 
 	public static void main(String[] args) {
-		int a =10;
-		int b =20;
+		Value a = new Value(10);
+		Value b = new Value(20);
 		
-		System.out.println("a="+ a + ", b=" + b);
+		System.out.println("a="+ a.val + ", b=" + b.val);
 		
 		swap(a,b);
 //		int temp = a;
 //		a= b;
 //		b = temp;
 		
-		System.out.println("a="+ a + ", b=" + b);
+		System.out.println("a="+ a.val + ", b=" + b.val);
 
 	}
-	private static void swap(int m,int n) {
-		int temp = m;
-		m=n;
-		n=temp;
+	private static void swap(Value m,Value n) {
+		int temp = m.val;
+		m.val = n.val;
+		n.val=temp;
 				
 	}
 
