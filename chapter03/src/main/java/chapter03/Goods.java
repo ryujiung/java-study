@@ -41,6 +41,16 @@ public class Goods {
 	public void setCountSold(int countSold) {
 		this.countSold = countSold;
 	}
+
+	public void showInfo() {
+		// TODO Auto-generated method stub
+		System.out.println("상품이름: "+name+", 가격: "+price+", 재고개수: "+countStock+", 팔린개수: "+countSold);
+	}
+
+	public int calcDiscountPrice(double discountRate) {
+		// TODO Auto-generated method stub
+		return (int)(price +discountRate);
+	}
 }
 
 
