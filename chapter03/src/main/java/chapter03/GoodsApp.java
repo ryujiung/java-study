@@ -24,6 +24,8 @@ public class GoodsApp {
 		System.out.println(discountPrice);
 		
 		System.out.println("상품이름: "+camera.getName()+", 가격: "+camera.getPrice()+", 재고개수: "+camera.getCountStock()+", 팔린개수: "+camera.getCountSold());
+		Goods tv = new Goods("tv",40000,10,20);
 	}
+	
 
 }
