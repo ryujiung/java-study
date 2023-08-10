@@ -16,38 +16,45 @@ public class TV {
 	}
 	
 	public void channel(int channel) {
+	
 		
-		if(channel>255) {
+		if(channel > 255) {
 			channel =1;
 		}else if(channel<1) {
 			channel = 255;
+		}
+		if(!power) {
+			return;
 		}
 		this.channel = channel;
 		
 	}
 	
 	public void channel(boolean up) {
-		if(up = true) {
-			channel+=1;
+		if(up) {
+			channel(channel+1);
 		}else {
-			channel-=1;
+			channel(channel-1);
 		}
 		
 	}
 	
 	public void volume(boolean up) {
-		if(up = true) {
-			volume+=1;
+		if(up) {
+			volume(volume+1);
 		}else {
-			volume-=1;
+			volume(volume-1);
 		}
 		
 	}
 	public void volume(int volume) {
+		if(!power) {
+			return;
+		}
 		if(volume>100) {
-			channel =0;
-		}else if(channel<0) {
-			channel = 100;
+			volume =0;
+		}else if(volume<0) {
+			volume = 100;
 		}
 		this.volume = volume;
 	}
