@@ -2,6 +2,10 @@ package exception;
 
 public class Exception {
 
+	public Exception(String message) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public static void main(String[] args) {
 		int a =10;
 		int b = 10-a;
