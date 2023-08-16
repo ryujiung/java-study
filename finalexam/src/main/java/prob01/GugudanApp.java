@@ -1,6 +1,6 @@
 package prob01;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class GugudanApp {
 
@@ -48,13 +48,15 @@ public class GugudanApp {
 		/* 코드 작성(수정 가능) */
 		final int COUNT_ANSWER_NUMBER = 9;
 		int[] boardNumbers = new int[COUNT_ANSWER_NUMBER];
-		for(int i = 0; i < COUNT_ANSWER_NUMBER;i++) {
-			int a = randomize(1,81);
-			while (boardNumbers.equals(a) || a == resultNumber) {
-                a = randomize(1, 81); 
-            }
-				boardNumbers[i] = a;
-			
+		Set <Integer> a = new HashSet<>();
+		Random random = new Random();
+		while(a.size()<COUNT_ANSWER_NUMBER) {
+			int rnumber = random.nextInt(80)+1;
+			a.add(rnumber);
+		}
+		int index = 0;
+		for(int answer:a) {
+			boardNumbers[index++] = answer;
 		}
 		return boardNumbers;
 	}
