@@ -22,5 +22,6 @@
   		<module>javaiopractice</module>
   		<module>usermanage</module>
   		<module>finalexam</module>
+  		<module>network</module>
   	</modules>
 </project>
