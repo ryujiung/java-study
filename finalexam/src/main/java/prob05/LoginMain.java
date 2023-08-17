@@ -37,10 +37,8 @@ public class LoginMain {
 	
 	public static void login(List<User> users, User user ){
 		/* 코드 작성 */
-		boolean foundUser = false;
 		for(User u:users) {
 			if(u.getId().equals(user.getId())) {
-				foundUser = true;
 				if(u.getPassword().equals(user.getPassword())) {
 					return;
 				}else {
@@ -48,9 +46,7 @@ public class LoginMain {
 				}
 			}
 			}
-		if(!foundUser) {
 			throw new UserNotFoundException();
-		}
 		
 	}
 }
