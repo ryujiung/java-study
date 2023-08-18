@@ -23,5 +23,6 @@
   		<module>usermanage</module>
   		<module>finalexam</module>
   		<module>network</module>
+  		<module>chapter031</module>
   	</modules>
 </project>
