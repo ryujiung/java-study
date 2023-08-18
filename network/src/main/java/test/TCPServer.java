@@ -53,9 +53,9 @@ public class TCPServer {
 				os.write(data.getBytes("utf-8"));
 			}
 			
-		}catch(SocketException e) {
-			System.out.println("[server] suddenly closed by client");
-		}
+//		}catch(SocketException e) {
+//			System.out.println("[server] suddenly closed by client");
+//		}
 		}catch (IOException e) {
 			System.out.println("[server] eerror: "+e);
 		}finally {
