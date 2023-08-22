@@ -21,7 +21,7 @@ public class ChatServer {
 			serversocket.setReuseAddress(true);
 			
 			String localhost = InetAddress.getLocalHost().getHostAddress();
-			serversocket.bind(new InetSocketAddress("0,0,0,0", PORT),5);
+			serversocket.bind(new InetSocketAddress("0,0,0,0", PORT),10);
 			System.out.println("chatserver starts at"+PORT);
 			
 			while(true) {

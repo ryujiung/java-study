@@ -11,6 +11,7 @@ public class ChatServer {
     public static void main(String[] args){
        try {
            ServerSocket serverSocket = new ServerSocket(9900);
+           serverSocket.setReuseAddress(true);
 
            List<ChatServerThread> list = Collections.synchronizedList(new ArrayList<>());
            while (true) {
