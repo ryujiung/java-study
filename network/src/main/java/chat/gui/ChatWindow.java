@@ -12,6 +12,15 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.net.SocketException;
+
+import chat02.ChatClientThread;
 
 public class ChatWindow {
 
@@ -20,6 +29,7 @@ public class ChatWindow {
 	private Button buttonSend;
 	private TextField textField;
 	private TextArea textArea;
+	private Socket socket;
 
 	public ChatWindow(String name) {
 		frame = new Frame(name);
@@ -76,12 +86,31 @@ public class ChatWindow {
 		});
 		frame.setVisible(true);
 		frame.pack();
-		
+		try {
 		//IOStream 받아오기 
-		// ChatClientThread 생성하고 실
+		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+		
+		// ChatClientThread 생성하고 실행 
+		ChatClientThread chatClientThread = new ChatClientThread(socket);
+        chatClientThread.start();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	private void finish() {
 		//quit 프로토콜 구현 
+		try {
+			if(socket != null && !socket.isClosed()) {
+				socket.close();
+				System.out.println("채팅창 종료");
+				System.exit(0);
+			}
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 		//exit java(jvm)
 		System.exit(0);
 	}
@@ -92,8 +121,6 @@ public class ChatWindow {
 		textField.setText("");
 		textField.requestFocus();
 		
-		//ChatClientThread에서 서버로부터 받은 메세지가 있다고 치고~~
-		updateTextArea("마이콜: "+message);
 		
 	}
 	
@@ -103,10 +130,33 @@ public class ChatWindow {
 	}
 	
 	private class ChatClientThread extends Thread{
+		private Socket socket;
+
+
+		public ChatClientThread(Socket socket) {
+			this.socket = socket;
+			// TODO Auto-generated constructor stub
+		}
 
 		@Override
 		public void run() {
-			updateTextArea("마이콜: 안녕");
+			try {
+				BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(),"utf-8"));
+				
+				while(true) {
+					String message = br.readLine();
+					if(message == null) {
+						break;
+					}
+					updateTextArea(message);
+				}
+			}catch(SocketException ex) {
+				System.out.println("Error"+ex);
+			}catch(IOException e) {
+				e.printStackTrace();
+			}finally {
+				finish();
+			}
 		}
 		
 	}

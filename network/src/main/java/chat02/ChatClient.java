@@ -26,8 +26,8 @@ public class ChatClient {
 	        System.out.print("닉네임>>");
 	        String name = scanner.nextLine();
 	        pw.println("Join:"+name);
-	        String br1 = br.readLine();
-	        if("Join:ok".equals(br1)) {
+	        String ack = br.readLine();
+	        if("Join:ok".equals(ack)) {
 	        	System.out.println("입장하였습니다.");
 	        }
 	        ChatClientThread chatClientThread = new ChatClientThread(socket);
