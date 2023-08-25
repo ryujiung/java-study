@@ -10,7 +10,7 @@ import java.util.List;
 public class ChatServer {
     public static void main(String[] args){
        try {
-           ServerSocket serverSocket = new ServerSocket(9900);
+           ServerSocket serverSocket = new ServerSocket(9850);
            serverSocket.setReuseAddress(true);
 
            List<ChatServerThread> list = Collections.synchronizedList(new ArrayList<>());

@@ -6,11 +6,12 @@ import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatServer {
-	private static final int PORT = 9999;
+	private static final int PORT = 8887;
 	public static void main(String[] args) {
 		List<PrintWriter> listPrintWriter = new ArrayList<PrintWriter>();
 		ServerSocket serversocket = null;
@@ -21,7 +22,7 @@ public class ChatServer {
 			serversocket.setReuseAddress(true);
 			
 			String localhost = InetAddress.getLocalHost().getHostAddress();
-			serversocket.bind(new InetSocketAddress("0,0,0,0", PORT),10);
+			serversocket.bind(new InetSocketAddress("0.0.0.0", PORT),10);
 			System.out.println("chatserver starts at"+PORT);
 			
 			while(true) {
@@ -31,11 +32,19 @@ public class ChatServer {
 				thread.start();
 			}
 						
-		}catch(IOException e) {
+		}catch(SocketException e){
+			e.printStackTrace();
+		}
+		catch(IOException e) {
 			System.out.println("error"+e);
 		}finally {
 			if(serversocket != null && serversocket.isClosed() == false) {
-				serversocket.close();
+				try {
+					serversocket.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		

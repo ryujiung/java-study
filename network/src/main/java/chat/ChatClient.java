@@ -13,7 +13,7 @@ public class ChatClient {
     	System.out.print("닉네임>>");
     	Scanner scanner = new Scanner(System.in);
     	String name = scanner.nextLine();
-        Socket socket = new Socket("127.0.0.1",9900);
+        Socket socket = new Socket("127.0.0.1",9850);
         BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
         BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
