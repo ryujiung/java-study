@@ -39,7 +39,7 @@ public class ChatServerThread extends Thread{
             String line = null;
 
             while ((line = br.readLine()) != null) {
-                if ("/quit".equals(line)) {
+                if ("quit".equals(line)) {
                     break;
                 }
                 broadcast(name +" : " + line, true);
