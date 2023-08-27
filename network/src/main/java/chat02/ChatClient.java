@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class ChatClient {
 	private static final String Server_Ip ="127.0.0.1";
-	private static final int Port = 8887;
+	private static final int Port = 8889;
 
 	public static void main(String[] args) {
 		Scanner scanner = null;

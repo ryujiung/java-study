@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class ChatClientApp {
 	
 	public static final String Server_Ip ="127.0.0.1";
-	public static final int Port = 8887;
+	public static final int Port = 8888;
 
 	public static void main(String[] args) {
 		
@@ -47,7 +47,7 @@ public class ChatClientApp {
         pw.println("Join"+name);
         String ack = br.readLine();
         if("Join:ok".equals(ack)) {
-        	new ChatWindow(name).show();
+        	new ChatWindow(name,socket).show();
         }
         
 	}catch(ConnectException e) {

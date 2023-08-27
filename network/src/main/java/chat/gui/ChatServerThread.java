@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.List;
@@ -25,6 +26,7 @@ public class ChatServerThread extends Thread{
 		BufferedReader br = null;
 		PrintWriter pw = null;
 		try {
+		InetSocketAddress remoteSocketAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
 		br = new BufferedReader(new InputStreamReader(socket.getInputStream(),"utf-8"));
 		pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(),"utf-8"));
 		
