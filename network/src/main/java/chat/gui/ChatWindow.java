@@ -31,6 +31,9 @@ public class ChatWindow {
 	private TextArea textArea;
 	private Socket socket;
 	private String name;
+	private BufferedReader br;
+	private PrintWriter pw;
+	private String message;
 
 	public ChatWindow(String name, Socket socket) {
 		frame = new Frame(name);
@@ -91,8 +94,8 @@ public class ChatWindow {
 		frame.pack();
 		try {
 		//IOStream 받아오기 
-		BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-		PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
+		br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()));
 		
 		// ChatClientThread 생성하고 실행 
 		ChatClientThread chatClientThread = new ChatClientThread(socket);
@@ -118,14 +121,22 @@ public class ChatWindow {
 		System.exit(0);
 	}
 	private void sendMessage() {
-		String message = textField.getText();
-		System.out.println("메세지를 보내는 프로토로 구현: "+message);
-		
-		textField.setText("");
-		textField.requestFocus();
-		
-		
-	}
+        message = textField.getText();
+
+        if ((message.trim()).isEmpty() == false) {
+
+            if (message.equals("quit")) {
+                finish();
+            }
+            pw.println("message:" + message);
+            textField.setText("");
+            textField.requestFocus();
+
+            System.out.println(ChatClientApp.name + "이 보내는 메세지 : " + message);
+        } else {
+            updateTextArea("메세지는 한글자 이상 입력하셔야 합니다.");
+        }
+    }
 	
 	private void updateTextArea(String message) {
 		textArea.append(message);

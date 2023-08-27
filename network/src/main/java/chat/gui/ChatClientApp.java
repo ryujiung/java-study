@@ -12,13 +12,12 @@ public class ChatClientApp {
 	
 	public static final String Server_Ip ="127.0.0.1";
 	public static final int Port = 8888;
-
+	public static String name = null;
 	public static void main(String[] args) {
 		
-		
-		String name = null;
 		Socket socket = null;
 		Scanner scanner = null;
+		
 		
 		try {
 		scanner = new Scanner(System.in);
