@@ -11,6 +11,7 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 	</properties>
+
   	<modules>
   		<module>chapter03</module>
   		<module>project01</module>
@@ -25,4 +26,7 @@
   		<module>network</module>
   		<module>chapter031</module>
   	</modules>
+  	<!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+
+
 </project>
